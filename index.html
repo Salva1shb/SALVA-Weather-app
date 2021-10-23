@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Weather Forecast</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Oswald:wght@200;300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card main">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-3">
+              <h1>Leeds</h1>
+              <span id="temp-h">23°</span>
+              <span>
+                <strong id="celcius-h">C</strong> /
+                <small id="farenheit-h">F</small>
+              </span>
+              <br />
+              <div>
+                Feels like: <span id="feels-like-h"><strong></strong></span
+                ><small> °C</small>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <h6 id="dateshow">Thursday, Sep 2</h6>
+                  <div id="timeshow">18:02</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-2 current-weather">
+              <img
+                src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/019/628/original/rainbow.png?1635003609"
+                alt="cloudy"
+                width="120px"
+                class="main-img"
+              />
+              <h5 class="current-weather" id="weather-description-h">Cloudy</h5>
+            </div>
+
+            <div class="col-5">
+              <form id="weatherform-h">
+                <div class="input-group w-75 mx-auto mt-15">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="City name..."
+                    id="weatherinput-h"
+                  />
+                  <button
+                    class="btn btn-outline-info search"
+                    type="submit"
+                    id="button-h"
+                  >
+                    <img
+                      src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/019/629/original/search2.png?1635003620"
+                      alt=""
+                    />
+                  </button>
+                </div>
+              </form>
+
+              <h6 class="humidity">
+                Humidity: <span id="humidity-h"></span> <small>%</small>
+                <div>Wind: <span id="wind-h"></span> <small>km/h</small></div>
+              </h6>
+            </div>
+            <div class="col-2">
+              <ul>
+                <li id="currentLocation-h">
+                  <button id="currentLocationButton-h">Current Location</button>
+                </li>
+                <li id="london-h">London</li>
+                <li id="paris-h">Paris</li>
+                <li id="vancouver-h">Vancouver</li>
+                <div class="dots">...</div>
+              </ul>
+            </div>
+          </div>
+          <br />
+          <br />
+
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <div class="futureforecast">
+                    <p>Fri</p>
+                    <img
+                      src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/019/627/original/cloudy-day.png?1635003602"
+                      alt="cloudy-day"
+                      width="80px"
+                    />
+                    <div class="row">
+                      <div class="col">
+                        <p><strong>36°</strong></p>
+                      </div>
+                      <div class="col"><p>7°</p></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="futureforecast">
+                    <p>Sat</p>
+                    <img
+                      src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/019/632/original/sun.png?1635003643"
+                      alt="sunny"
+                      width="80px"
+                    />
+                    <div class="row">
+                      <div class="col">
+                        <p><strong>36°</strong></p>
+                      </div>
+                      <div class="col"><p>7°</p></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="futureforecast">
+                    <p>Sun</p>
+                    <img
+                      src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/019/626/original/cloudy.png?1635003590"
+                      alt="cloudy"
+                      width="80px"
+                    />
+                    <div class="row">
+                      <div class="col">
+                        <p><strong>36°</strong></p>
+                      </div>
+                      <div class="col"><p>7°</p></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="futureforecast">
+                    <p>Mon</p>
+                    <img
+                      src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/019/631/original/storm.png?1635003637"
+                      alt="stormy"
+                      width="80px"
+                    />
+                    <div class="row">
+                      <div class="col">
+                        <p><strong>36°</strong></p>
+                      </div>
+                      <div class="col"><p>7°</p></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="futureforecast">
+                    <p>Tue</p>
+                    <img
+                      src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/019/630/original/snowy.png?1635003627"
+                      alt="snowy"
+                      width="80px"
+                    />
+                    <div class="row">
+                      <div class="col">
+                        <p><strong>36°</strong></p>
+                      </div>
+                      <div class="col"><p>7°</p></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="attribute">
+      Icons made by
+      <a href="https://www.freepik.com" title="Freepik">Freepik</a> from
+      <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+    </div>
+    <div class="open-source">
+      <a href="https://github.com/Salva1shb/SALVA-Weather-app"
+        >Open-source code</a
+      >
+      by SALVA
+    </div>
+    <script src="java_realData.js"></script>
+  </body>
+</html>

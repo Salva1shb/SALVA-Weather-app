@@ -26,11 +26,11 @@
         <div class="card-body">
           <div class="row">
             <div class="col-3">
-              <h1>Leeds</h1>
-              <span id="temp-h">23°</span>
-              <span>
-                <strong id="celcius-h">C</strong> /
-                <small id="farenheit-h">F</small>
+              <h1></h1>
+              <span id="temp-h"></span>
+              <span class="units">
+                <a href="#" id="celcius-h" class="active">°C </a> |
+                <a href="#" id="farenheit-h">°F</a>
               </span>
               <br />
               <div>
@@ -39,19 +39,20 @@
               </div>
               <div class="row">
                 <div class="col">
-                  <h6 id="dateshow">Thursday, Sep 2</h6>
-                  <div id="timeshow">18:02</div>
+                  <h6 id="dateshow"></h6>
+                  <div id="timeshow"></div>
                 </div>
               </div>
             </div>
             <div class="col-2 current-weather">
               <img
-                src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/019/628/original/rainbow.png?1635003609"
+                src=""
                 alt="cloudy"
                 width="120px"
                 class="main-img"
+                id="main-icon-h"
               />
-              <h5 class="current-weather" id="weather-description-h">Cloudy</h5>
+              <h5 class="current-weather" id="weather-description-h"></h5>
             </div>
 
             <div class="col-5">
@@ -184,18 +185,21 @@
           </div>
         </div>
       </div>
+      <div class="attribute">
+        Icons made by
+        <a href="https://www.freepik.com" title="Freepik">Freepik</a> from
+        <a href="https://www.flaticon.com/" title="Flaticon"
+          >www.flaticon.com</a
+        >
+      </div>
+      <div class="open-source">
+        <a href="https://github.com/Salva1shb/SALVA-Weather-app"
+          >Open-source code</a
+        >
+        by SALVA
+      </div>
     </div>
-    <div class="attribute">
-      Icons made by
-      <a href="https://www.freepik.com" title="Freepik">Freepik</a> from
-      <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-    </div>
-    <div class="open-source">
-      <a href="https://github.com/Salva1shb/SALVA-Weather-app"
-        >Open-source code</a
-      >
-      by SALVA
-    </div>
+
     <script src="java_realData.js"></script>
   </body>
 </html>

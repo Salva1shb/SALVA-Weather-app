@@ -45,7 +45,10 @@ function showTemp(response) {
   //show temp
   let templine = document.querySelector("#temp-h");
   let roundtemp = Math.round(response.data.main.temp);
-  templine.innerHTML = `${roundtemp}°`;
+  templine.innerHTML = `${roundtemp}`;
+
+  let celciustemp = response.data.main.temp;
+
   //show city
   let cityline = document.querySelector("h1");
   cityline.innerHTML = response.data.name;
@@ -66,6 +69,15 @@ function showTemp(response) {
   document.querySelector("#feels-like-h").innerHTML = Math.round(
     response.data.main.feels_like
   );
+
+  //changing icons
+  let mainIcon = document.querySelector("#main-icon-h");
+  mainIcon.setAttribute(
+    "src",
+    ` http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  //changing alt value
+  mainIcon.setAttribute("alt", response.data.weather[0].description);
 }
 
 function getAxios(city) {
@@ -142,3 +154,32 @@ function selectVan(Van) {
 }
 let vancouverchoice = document.querySelector("#vancouver-h");
 vancouverchoice.addEventListener("click", selectVan);
+
+//convert to farenheit
+
+function ConvertToFarenheit(event) {
+  event.preventDefault();
+  let farenheittemp = (celciustemp * 9) / 5 + 32;
+  document.querySelector("#temp-h").innerHTML = Math.round(farenheittemp);
+
+  celcius.classList.remove("active");
+  farenheit.classList.add("active");
+}
+
+let farenheit = document.querySelector("#farenheit-h");
+farenheit.addEventListener("click", ConvertToFarenheit);
+
+//convert to celcius
+
+function ConvertToClecius(event) {
+  event.preventDefault();
+  document.querySelector("#temp-h").innerHTML = Math.round(celciustemp);
+
+  farenheit.classList.remove("active");
+  celcius.classList.add("active");
+}
+
+let celcius = document.querySelector("#celcius-h");
+celcius.addEventListener("click", ConvertToClecius);
+
+let celciustemp = null;

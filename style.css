@@ -121,12 +121,31 @@ form {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 11px;
-  margin-left: 1000px;
+  margin-left: 744px;
   margin-top: -13px;
 }
 .current-weather {
   line-height: 2px;
 }
+.units {
+  font-size: 12px;
+}
+
+.active {
+  color: black;
+  cursor: default;
+}
+
+.active:hover {
+  text-decoration: none;
+}
+#celcius-h {
+  text-decoration: none;
+}
+#farenheit-h {
+  text-decoration: none;
+}
+
 #timeshow {
   text-align: center;
 }
@@ -146,7 +165,7 @@ form {
   cursor: pointer;
 }
 #temp-h {
-  font-size: 28px;
+  font-size: 48px;
   font-weight: 600;
 }
 #weatherinput-h {

@@ -44,10 +44,10 @@ function showTemp(response) {
   console.log(response.data);
   //show temp
   let templine = document.querySelector("#temp-h");
+  celciustemp = response.data.main.temp;
+
   let roundtemp = Math.round(response.data.main.temp);
   templine.innerHTML = `${roundtemp}`;
-
-  let celciustemp = response.data.main.temp;
 
   //show city
   let cityline = document.querySelector("h1");

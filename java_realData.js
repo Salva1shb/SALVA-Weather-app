@@ -39,6 +39,38 @@ if (minute < 10) {
 let timebar = document.querySelector("#timeshow");
 timebar.innerHTML = `${hour}:${minute}`;
 
+function displayForecast() {
+  let forecast = document.querySelector("#forecast-h");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sun", "Mon", "Tue", "Wed", "Turs", "Fri"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+                <div class="col-2">
+                  <div class="futureforecast">
+                    <p>${day}</p>
+                    <img
+                      src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/019/627/original/cloudy-day.png?1635003602"
+                      alt="cloudy-day"
+                      width="80px"
+                    />
+                    <div class="row">
+                      <div class="col">
+                        <p><strong>36°</strong></p>
+                      </div>
+                      <div class="col"><p>7°</p></div>
+                    </div>
+                  </div>
+                </div>
+              
+  `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecast.innerHTML = forecastHTML;
+}
+
 //show Temperature
 function showTemp(response) {
   console.log(response.data);
@@ -183,3 +215,4 @@ let celcius = document.querySelector("#celcius-h");
 celcius.addEventListener("click", ConvertToClecius);
 
 let celciustemp = null;
+displayForecast();

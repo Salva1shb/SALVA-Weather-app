@@ -84,20 +84,13 @@ form {
   margin-top: 30px;
   box-shadow: 3px 3px 10px rgba(70, 70, 70, 0.5);
 }
-.dots {
-  text-align: center;
-  margin-top: 0;
-  line-height: 1px;
-}
-.dots:hover {
-  cursor: pointer;
-}
+
 .futureforecast {
   display: table;
   margin: auto;
   border: 1px solid transparent;
   border-radius: 15px;
-  padding: 10px 40px;
+  padding: 10px 30px;
   transition: all 150ms ease-in-out;
 }
 .futureforecast:hover {
@@ -121,8 +114,8 @@ form {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 11px;
-  margin-left: 744px;
-  margin-top: -13px;
+  text-align: center;
+  margin-top: 6px;
 }
 .current-weather {
   line-height: 2px;
@@ -138,6 +131,11 @@ form {
 
 .units .active:hover {
   text-decoration: none;
+}
+.description-forecast {
+  text-align: center;
+  font-size: 12px;
+  margin-bottom: 12px;
 }
 #celcius-h {
   text-decoration: none;
@@ -170,9 +168,9 @@ form {
 #currentLocationButton-h {
   border: none;
   border-radius: 15px;
-  background-color: #0dcaf0;
+  background-color: #f2f2f1;
 }
 #currentLocation-h {
-  background-color: #0dcaf0;
+  background-color: #f2f2f1;
   border: 2.5px solid rgb(125, 151, 151);
 }

@@ -5,7 +5,7 @@ let days = [
   "Monday",
   "Tuesday",
   "Wednesday",
-  "Tursday",
+  "Thursday",
   "Friday",
   "Saturday",
 ];
@@ -39,41 +39,71 @@ if (minute < 10) {
 let timebar = document.querySelector("#timeshow");
 timebar.innerHTML = `${hour}:${minute}`;
 
-function displayForecast() {
+// forecast
+function formatDays(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
+function displayForecast(response) {
+  console.log(response.data);
+  let forecastdays = response.data.daily;
   let forecast = document.querySelector("#forecast-h");
   let forecastHTML = `<div class="row">`;
-  let days = ["Sun", "Mon", "Tue", "Wed", "Turs", "Fri"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+
+  forecastdays.forEach(function (forecastdays, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
                 <div class="col-2">
                   <div class="futureforecast">
-                    <p>${day}</p>
+                    <p>${formatDays(forecastdays.dt)}</p>
                     <img
-                      src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/019/627/original/cloudy-day.png?1635003602"
-                      alt="cloudy-day"
+                      src="http://openweathermap.org/img/wn/${
+                        forecastdays.weather[0].icon
+                      }@2x.png"
+                                           alt=""
                       width="80px"
                     />
+                     <div class="description-forecast">${
+                       forecastdays.weather[0].main
+                     }</div>
+                     
                     <div class="row">
                       <div class="col">
-                        <p><strong>36°</strong></p>
+                        <p><strong>${Math.round(
+                          forecastdays.temp.max
+                        )}°</strong></p>
                       </div>
-                      <div class="col"><p>7°</p></div>
+                      <div class="col"><p>${Math.round(
+                        forecastdays.temp.min
+                      )}°</p></div>
                     </div>
                   </div>
                 </div>
               
   `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
   forecast.innerHTML = forecastHTML;
 }
 
+function getForecast(coordinations) {
+  //console.log(coordinations);
+  let apikey = "dff5c692192605ee5ed7f95b423ae857";
+  let APIurl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinations.lat}&lon=${coordinations.lon}&appid=${apikey}&units=metric`;
+
+  axios(APIurl).then(displayForecast);
+}
+
 //show Temperature
 function showTemp(response) {
-  console.log(response.data);
+  //console.log(response.data);
   //show temp
   let templine = document.querySelector("#temp-h");
   celciustemp = response.data.main.temp;
@@ -97,7 +127,7 @@ function showTemp(response) {
   let description = response.data.weather[0].description;
   descriptionline.innerHTML = description;
   //show feels like
-  console.log(response.data.main.feels_like);
+  // console.log(response.data.main.feels_like);
   document.querySelector("#feels-like-h").innerHTML = Math.round(
     response.data.main.feels_like
   );
@@ -110,6 +140,10 @@ function showTemp(response) {
   );
   //changing alt value
   mainIcon.setAttribute("alt", response.data.weather[0].description);
+
+  //get forecast info
+
+  getForecast(response.data.coord);
 }
 
 function getAxios(city) {
@@ -126,7 +160,7 @@ function getCity(response) {
   let city = weatherinput.value;
   let cityline = document.querySelector("h1");
   cityline.innerHTML = `${city}`;
-  console.log(city);
+  //console.log(city);
   getAxios(city);
 }
 
@@ -144,7 +178,7 @@ defualtSearch("Manchester");
 //Geolocation API/current location
 
 function getAxiosforplace(info) {
-  console.log(info);
+  //console.log(info);
   let apikey = "dff5c692192605ee5ed7f95b423ae857";
   let lat = info.coords.latitude;
   let lon = info.coords.longitude;
@@ -154,7 +188,7 @@ function getAxiosforplace(info) {
 }
 
 function getcurrentposition(position) {
-  console.log(navigator.geolocation.getCurrentPosition);
+  //console.log(navigator.geolocation.getCurrentPosition);
   navigator.geolocation.getCurrentPosition(getAxiosforplace);
 }
 
@@ -215,4 +249,3 @@ let celcius = document.querySelector("#celcius-h");
 celcius.addEventListener("click", ConvertToClecius);
 
 let celciustemp = null;
-displayForecast();
